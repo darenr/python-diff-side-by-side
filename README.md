@@ -14,3 +14,7 @@ Example Usage:
     # display(HTML(DiffCode(file1, file2, name=file2).format(syntax_css='vs', print_width=80)))
 
 ```
+
+Screenshot
+
+![Screenshot](/screenshot.png?raw=true "Screenshot")
