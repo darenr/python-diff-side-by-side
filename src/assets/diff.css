@@ -47,18 +47,6 @@ These styles are used to modify the containing area is placed/displayed.
   border-right: 1px dashed #777;
 }
 
-#topbar {
-  font-family: Helvetica, sans-serif;
-  background-color: #555;
-  border-bottom: 0px solid #999;
-  padding: 0;
-  position: fixed;
-  top: 0;
-  height: 30px;
-  width: 100%;
-  z-index: 100;
-}
-
 #filetitle {
   display: inline-block;
   font-weight: bold;
@@ -171,7 +159,7 @@ input.toggle-yes-no:checked+label:after {
 /*end Toggle buttons*/
 div#maincontainer {
   overflow-x: auto;
-  margin: 20px 0 0 15px;
+  margin: 0px;
 }
 
 .page-80-width {

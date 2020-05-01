@@ -65,10 +65,7 @@ body .il { color: #ae81ff } /* Literal.Number.Integer.Long */
 
 /* Override the surrounding theme to match a dark theme*/
 
-#topbar {
-	 background: #272822; 
-	 color: #f8f8f2
-}
+
 td.linenos {
   background: #272822;
   padding: 0 5px 0 5px;
@@ -84,9 +81,9 @@ div.codebox table {
   border-bottom: 0px solid #272822;
 }
 
-/* 
+/*
 These styles are used to highlight each diff line.
-Note: for partial like highlight change to "display:block-inline" 
+Note: for partial like highlight change to "display:block-inline"
 */
 span.left_diff_change {
   background-color: #FFCF74;

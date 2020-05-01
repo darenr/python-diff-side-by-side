@@ -31,11 +31,6 @@ HTML_TEMPLATE = """
 </head>
 
 <body>
-  <div class="" id="topbar">
-    <div id="filetitle">
-      %(page_title)s
-    </div>
-  </div>
   <div id="maincontainer" class="%(page_width)s">
     <div id="leftcode" class="left-inner-shadow codebox divider-outside-bottom">
       <div class="codefiletab">
