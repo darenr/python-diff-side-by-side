@@ -25,7 +25,6 @@ HTML_TEMPLATE = """
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="mobile-web-app-capable" content="yes">
-  <link rel="stylesheet" href="%(reset_css)s" type="text/css">
   <link rel="stylesheet" href="%(diff_css)s" type="text/css">
   <link class="syntaxdef" rel="stylesheet" href="%(pygments_css)s" type="text/css">
 </head>
