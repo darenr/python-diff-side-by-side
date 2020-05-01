@@ -39,7 +39,7 @@ HTML_TEMPLATE = """
   <div id="maincontainer" class="%(page_width)s">
     <div id="leftcode" class="left-inner-shadow codebox divider-outside-bottom">
       <div class="codefiletab">
-        &#10092; Original
+        %(from_file)s
       </div>
       <div class="printmargin">
         01234567890123456789012345678901234567890123456789012345678901234567890123456789
@@ -48,7 +48,7 @@ HTML_TEMPLATE = """
     </div>
     <div id="rightcode" class="left-inner-shadow codebox divider-outside-bottom">
       <div class="codefiletab">
-        &#10093; Modified
+        %(to_file)s
       </div>
       <div class="printmargin">
         01234567890123456789012345678901234567890123456789012345678901234567890123456789
@@ -224,9 +224,9 @@ class DiffHtmlFormatter(HtmlFormatter):
 
 
 class Namespace:
+
     def __init__(self, **kwargs):
         self.__dict__.update(kwargs)
-
 
 class DiffCode(object):
     """
@@ -297,6 +297,13 @@ class DiffCode(object):
 
         options = Namespace(**kwargs)
 
+
+        if not 'from_file_title' in options.__dict__:
+            options.__dict__['from_file_title'] = self.fromfile
+
+        if not 'to_file_title' in options.__dict__:
+            options.__dict__['to_file_title'] = self.tofile
+
         self.diffs = self.getDiffDetails(self.fromfile, self.tofile)
 
         fields = ((self.leftcode, True, self.fromfile),
@@ -332,12 +339,14 @@ class DiffCode(object):
             "page_title":     self.filename,
             "original_code":  codeContents[0],
             "modified_code":  codeContents[1],
+            "from_file":      options.from_file_title,
+            "to_file":        options.to_file_title,
             "diff_js":        self.diffJsFile,
             "page_width":     "page-80-width" if options.print_width else "page-full-width"
         }
 
         self.htmlContents = HTML_TEMPLATE % answers
-        
+
         return self.htmlContents
 
 
@@ -345,4 +354,9 @@ if __name__ == '__main__':
     file1 = "/Users/drace/tmp/pyspark_1.py"
     file2 = "/Users/drace/tmp/pyspark_2.py"
 
-    print(DiffCode(file1, file2, name=file2).format(syntax_css='vs', print_width=80))
+    print(DiffCode(file1, file2, name=file2).format(
+        syntax_css='vs',
+        print_width=80,
+        from_file_title = file1,
+        to_file_title = file2
+    ))
