@@ -25,6 +25,7 @@ HTML_TEMPLATE = """
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" href="%(reset_css)s" type="text/css">
   <link rel="stylesheet" href="%(diff_css)s" type="text/css">
   <link class="syntaxdef" rel="stylesheet" href="%(pygments_css)s" type="text/css">
 </head>
@@ -227,10 +228,11 @@ class DiffCode(object):
     Manages a pair of source files and generates a single html diff page comparing
     the contents.
     """
-    pygmentsCssFile = "./assets/codeformats/%s.css"
-    diffCssFile = "./assets/diff.css"
-    diffJsFile = "./assets/diff.js"
-    resetCssFile = "./assets/reset.css"
+    pygments_css_file = "./assets/codeformats/%s.css"
+    diff_css_file = "./assets/diff.css"
+    reset_css_file = "./assets/reset.css"
+    diff_js_file = "./assets/diff.js"
+    reset_css_file = "./assets/reset.css"
     jqueryJsFile = "./assets/jquery-1.12.4.min.js"
 
     def __init__(self, fromfile, tofile, fromtxt=None, totxt=None, name=None):
@@ -327,15 +329,16 @@ class DiffCode(object):
 
         answers = {
             "html_title":     self.filename,
-            "reset_css":      self.resetCssFile,
-            "pygments_css":   self.pygmentsCssFile % options.syntax_css,
-            "diff_css":       self.diffCssFile,
+            "reset_css":      self.reset_css_file,
+            "pygments_css":   self.pygments_css_file % options.syntax_css,
+            "diff_css":       self.diff_css_file,
+            "reset_css":      self.reset_css_file,
             "page_title":     self.filename,
-            "original_code":  codeContents[0],
-            "modified_code":  codeContents[1],
+            "original_code":  codeContents[0].strip(),
+            "modified_code":  codeContents[1].strip(),
             "from_file":      options.from_file_title,
             "to_file":        options.to_file_title,
-            "diff_js":        self.diffJsFile,
+            "diff_js":        self.diff_js_file,
             "page_width":     "page-80-width" if options.print_width else "page-full-width"
         }
 
